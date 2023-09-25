@@ -41,16 +41,18 @@ public class Serial_rxtx extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         bt_conectar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txt_dataRx = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cb_dataRate = new javax.swing.JComboBox<>();
         cb_puerto = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        info_status = new javax.swing.JLabel();
+        txt_dataRx = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "7" }));
 
         jLabel1.setText("Bits de Parada");
 
@@ -65,11 +67,6 @@ public class Serial_rxtx extends javax.swing.JFrame {
             }
         });
 
-        txt_dataRx.setColumns(20);
-        txt_dataRx.setLineWrap(true);
-        txt_dataRx.setRows(5);
-        jScrollPane1.setViewportView(txt_dataRx);
-
         jButton2.setText("Enviar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,37 +80,51 @@ public class Serial_rxtx extends javax.swing.JFrame {
 
         jLabel4.setText("Puerto:");
 
+        info_status.setFont(new java.awt.Font("SIGMA-font rg", 1, 14)); // NOI18N
+        info_status.setText("Esperando Conexion..");
+
+        txt_dataRx.setBackground(new java.awt.Color(0, 0, 0));
+        txt_dataRx.setFont(new java.awt.Font("LCDMono", 1, 40)); // NOI18N
+        txt_dataRx.setForeground(new java.awt.Color(0, 255, 0));
+        txt_dataRx.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jTextField1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_dataRx)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cb_dataRate, 0, 179, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cb_puerto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(bt_conectar, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jTextField1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton2))
+                                .addComponent(bt_conectar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cb_dataRate, 0, 179, Short.MAX_VALUE)
+                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cb_puerto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(info_status))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -129,15 +140,17 @@ public class Serial_rxtx extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_conectar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(info_status)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_dataRx, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,7 +198,7 @@ public class Serial_rxtx extends javax.swing.JFrame {
                 //Thread.sleep(2000);
                 lee_puerto();
                 System.out.println("Fin SubProceso **Conexion Serial Desconectada**");
-                txt_dataRx.append("\nConexion Serial Desconectada");
+                info_status.setText("Conexion Serial Desconectada");
             } catch (Exception e) {
                 System.out.println("Error en: ProcesosThreads.MonitorServicios.ThreadPublicaItems.run()" + e.getMessage());
             }
@@ -198,20 +211,33 @@ public class Serial_rxtx extends javax.swing.JFrame {
 
         DataInputStream ins = new DataInputStream(serial.getInputStream());
         DataOutputStream outs = new DataOutputStream(serial.getOutputStream());
-        String data = "";
+        String data = "",lect="";
         try {
-            txt_dataRx.setText("Inicando conexion....");
+            info_status.setText("Inicando conexion....");
             //while(ins.available()==0 && !Thread.interrupted());// wait for a byte
             //while (!Thread.interrupted()) {// read all bytes
             while (std_conexion) {// read all bytes
                 if (ins.available() > 0) {
                     char b = (char) ins.read();
                     //outs.write((byte)b);
-                    data = String.valueOf(b);
-                    System.out.print(data);
+                    //data = String.valueOf(b);
+                    System.out.print(b);
+                    lect=lect+b;
+                    if(b=='\"'){
+                        //System.out.println("Data file:"+lect);
+                        data=lect;
+                        lect="";
+                    }
                 }
-                txt_dataRx.append(data);
-                txt_dataRx.setCaretPosition(txt_dataRx.getText().length());
+                String t = data.replaceAll("","").replaceAll("\"","");
+                if(t.length()>8){
+                    //System.out.println("Original: "+t);
+                    String s = t.substring(2, t.length()-8);
+                    //System.out.println("Substraido: "+s);
+                    txt_dataRx.setText(s);
+                }
+                
+                //txt_dataRx.setCaretPosition(txt_dataRx.getText().length());
                 Thread.sleep(5);
             }
         } catch (Exception ex) {
@@ -265,6 +291,7 @@ public class Serial_rxtx extends javax.swing.JFrame {
     private javax.swing.JButton bt_conectar;
     private javax.swing.JComboBox<String> cb_dataRate;
     private javax.swing.JComboBox<String> cb_puerto;
+    private javax.swing.JLabel info_status;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -272,9 +299,8 @@ public class Serial_rxtx extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextArea txt_dataRx;
+    private javax.swing.JTextField txt_dataRx;
     // End of variables declaration//GEN-END:variables
 
 }
